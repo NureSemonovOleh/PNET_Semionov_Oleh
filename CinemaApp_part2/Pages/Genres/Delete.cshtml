@@ -1,0 +1,9 @@
+@page "{id:int}"
+@model CinemaApp.Pages.Genres.DeleteModel
+@{ ViewData["Title"] = "Видалити жанр"; }
+<h2>Видалити жанр?</h2><hr />
+<div class="alert alert-warning">Жанр: <strong>@Model.Genre.Name</strong></div>
+<form method="post">
+    <button type="submit" class="btn btn-danger">Видалити</button>
+    <a asp-page="Index" class="btn btn-secondary ms-2">Скасувати</a>
+</form>

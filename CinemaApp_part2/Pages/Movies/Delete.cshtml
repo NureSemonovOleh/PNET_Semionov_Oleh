@@ -1,0 +1,27 @@
+@page "{id:int}"
+@model CinemaApp.Pages.Movies.DeleteModel
+@{
+    ViewData["Title"] = "Видалити фільм";
+}
+
+<h2>Видалити фільм</h2>
+<hr />
+
+<div class="alert alert-warning">
+    <strong>Увага!</strong> Ви збираєтесь видалити фільм:
+    <strong>@Model.Movie.Title</strong>
+</div>
+
+<dl class="row">
+    <dt class="col-sm-3">Режисер</dt>
+    <dd class="col-sm-9">@Model.Movie.Director?.FullName</dd>
+    <dt class="col-sm-3">Жанр</dt>
+    <dd class="col-sm-9">@Model.Movie.Genre?.Name</dd>
+    <dt class="col-sm-3">Рік</dt>
+    <dd class="col-sm-9">@Model.Movie.Year</dd>
+</dl>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Підтвердити видалення</button>
+    <a asp-page="Index" class="btn btn-secondary ms-2">Скасувати</a>
+</form>

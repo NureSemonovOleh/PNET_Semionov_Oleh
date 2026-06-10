@@ -1,0 +1,40 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Головна";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-4">Система управління кінотеатром</h1>
+    <p class="lead text-muted">Платформа .NET — Entity Framework Core + Razor Pages</p>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card h-100 border-primary">
+            <div class="card-body text-center">
+                <h3 class="card-title">🎥 @Model.MovieCount</h3>
+                <p class="card-text text-muted">Фільмів у базі</p>
+                <a asp-page="/Movies/Index" class="btn btn-primary">Переглянути фільми</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-success">
+            <div class="card-body text-center">
+                <h3 class="card-title">🎬 @Model.SessionCount</h3>
+                <p class="card-text text-muted">Сеансів заплановано</p>
+                <a asp-page="/Sessions/Index" class="btn btn-success">Переглянути сеанси</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-info">
+            <div class="card-body text-center">
+                <h3 class="card-title">🎭 @Model.DirectorCount</h3>
+                <p class="card-text text-muted">Режисерів</p>
+                <a asp-page="/Directors/Index" class="btn btn-info text-white">Переглянути режисерів</a>
+            </div>
+        </div>
+    </div>
+</div>

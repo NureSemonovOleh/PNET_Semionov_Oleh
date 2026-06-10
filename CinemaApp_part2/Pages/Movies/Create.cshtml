@@ -1,0 +1,69 @@
+@page
+@model CinemaApp.Pages.Movies.CreateModel
+@{
+    ViewData["Title"] = "Додати фільм";
+}
+
+<h2>Додати фільм</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Movie.Title" class="form-label"></label>
+                <input asp-for="Movie.Title" class="form-control" />
+                <span asp-validation-for="Movie.Title" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Movie.DirectorId" class="form-label"></label>
+                <select asp-for="Movie.DirectorId" asp-items="Model.Directors" class="form-select">
+                    <option value="">-- Оберіть режисера --</option>
+                </select>
+                <span asp-validation-for="Movie.DirectorId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Movie.GenreId" class="form-label"></label>
+                <select asp-for="Movie.GenreId" asp-items="Model.Genres" class="form-select">
+                    <option value="">-- Оберіть жанр --</option>
+                </select>
+                <span asp-validation-for="Movie.GenreId" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col mb-3">
+                    <label asp-for="Movie.Year" class="form-label"></label>
+                    <input asp-for="Movie.Year" class="form-control" type="number" />
+                    <span asp-validation-for="Movie.Year" class="text-danger"></span>
+                </div>
+                <div class="col mb-3">
+                    <label asp-for="Movie.Duration" class="form-label"></label>
+                    <input asp-for="Movie.Duration" class="form-control" type="number" />
+                    <span asp-validation-for="Movie.Duration" class="text-danger"></span>
+                </div>
+                <div class="col mb-3">
+                    <label asp-for="Movie.Rating" class="form-label"></label>
+                    <input asp-for="Movie.Rating" class="form-control" type="number" step="0.1" />
+                    <span asp-validation-for="Movie.Rating" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Movie.Description" class="form-label"></label>
+                <textarea asp-for="Movie.Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Movie.Description" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Зберегти</button>
+            <a asp-page="Index" class="btn btn-secondary ms-2">Скасувати</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

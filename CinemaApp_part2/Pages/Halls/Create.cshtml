@@ -1,0 +1,32 @@
+@page
+@model CinemaApp.Pages.Halls.CreateModel
+@{ ViewData["Title"] = "Додати зал"; }
+<h2>Додати зал</h2><hr />
+<div class="row"><div class="col-md-5">
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Hall.Name" class="form-label"></label>
+        <input asp-for="Hall.Name" class="form-control" />
+        <span asp-validation-for="Hall.Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Hall.Capacity" class="form-label"></label>
+        <input asp-for="Hall.Capacity" class="form-control" type="number" />
+        <span asp-validation-for="Hall.Capacity" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Hall.HallType" class="form-label"></label>
+        <select asp-for="Hall.HallType" class="form-select">
+            <option value="">-- Оберіть тип --</option>
+            <option>IMAX</option>
+            <option>3D</option>
+            <option>Standard</option>
+            <option>VIP</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Зберегти</button>
+    <a asp-page="Index" class="btn btn-secondary ms-2">Скасувати</a>
+</form>
+</div></div>
+@section Scripts { @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }

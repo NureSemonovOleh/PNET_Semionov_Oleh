@@ -1,0 +1,37 @@
+@page "{id:int}"
+@model CinemaApp.Pages.Sessions.DeleteModel
+@{
+    ViewData["Title"] = "Видалити сеанс";
+}
+
+<h2>Видалити сеанс</h2>
+<hr />
+
+@if (Model.ErrorMessage != null)
+{
+    <div class="alert alert-danger">@Model.ErrorMessage</div>
+    <a asp-page="Index" class="btn btn-secondary">Назад</a>
+}
+else
+{
+    <div class="alert alert-warning">
+        <strong>Увага!</strong> Ви збираєтесь видалити сеанс фільму:
+        <strong>@Model.Session.Movie?.Title</strong>
+    </div>
+
+    <dl class="row">
+        <dt class="col-sm-3">Зал</dt>
+        <dd class="col-sm-9">@Model.Session.Hall?.Name</dd>
+        <dt class="col-sm-3">Дата</dt>
+        <dd class="col-sm-9">@Model.Session.SessionDate.ToString("dd.MM.yyyy")</dd>
+        <dt class="col-sm-3">Час</dt>
+        <dd class="col-sm-9">@Model.Session.StartTime.ToString("HH:mm")</dd>
+        <dt class="col-sm-3">Продано квитків</dt>
+        <dd class="col-sm-9">@Model.Session.TicketsSold</dd>
+    </dl>
+
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Підтвердити видалення</button>
+        <a asp-page="Index" class="btn btn-secondary ms-2">Скасувати</a>
+    </form>
+}

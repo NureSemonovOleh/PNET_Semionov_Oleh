@@ -1,0 +1,38 @@
+@page
+@model CinemaApp.Pages.Directors.IndexModel
+@{
+    ViewData["Title"] = "Режисери";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Режисери</h2>
+    <a asp-page="Create" class="btn btn-primary">+ Додати режисера</a>
+</div>
+
+@if (!Model.Directors.Any())
+{
+    <div class="alert alert-info">Режисерів ще немає.</div>
+}
+else
+{
+    <table class="table table-hover">
+        <thead class="table-dark">
+            <tr><th>Прізвище</th><th>Ім'я</th><th>Країна</th><th>Фільмів</th><th>Дії</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var d in Model.Directors)
+            {
+                <tr>
+                    <td>@d.LastName</td>
+                    <td>@d.FirstName</td>
+                    <td>@d.Country</td>
+                    <td><span class="badge bg-secondary">@d.Movies.Count</span></td>
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@d.DirectorId" class="btn btn-sm btn-outline-secondary">Редагувати</a>
+                        <a asp-page="Delete" asp-route-id="@d.DirectorId" class="btn btn-sm btn-outline-danger">Видалити</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

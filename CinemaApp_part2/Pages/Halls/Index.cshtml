@@ -1,0 +1,26 @@
+@page
+@model CinemaApp.Pages.Halls.IndexModel
+@{ ViewData["Title"] = "Зали"; }
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Зали</h2>
+    <a asp-page="Create" class="btn btn-primary">+ Додати зал</a>
+</div>
+
+<table class="table table-hover">
+    <thead class="table-dark"><tr><th>Назва</th><th>Тип</th><th>Місткість</th><th>Дії</th></tr></thead>
+    <tbody>
+        @foreach (var h in Model.Halls)
+        {
+            <tr>
+                <td>@h.Name</td>
+                <td>@h.HallType</td>
+                <td>@h.Capacity</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@h.HallId" class="btn btn-sm btn-outline-secondary">Редагувати</a>
+                    <a asp-page="Delete" asp-route-id="@h.HallId" class="btn btn-sm btn-outline-danger">Видалити</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

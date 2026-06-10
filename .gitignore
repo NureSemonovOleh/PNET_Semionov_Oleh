@@ -1,0 +1,17 @@
+**/bin/
+**/obj/
+
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+*.nupkg
+**/packages/
+!**/packages/build/
+
+appsettings.Development.json
+appsettings.Local.json
+
+

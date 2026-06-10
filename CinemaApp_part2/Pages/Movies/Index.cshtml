@@ -1,0 +1,53 @@
+@page
+@model CinemaApp.Pages.Movies.IndexModel
+@{
+    ViewData["Title"] = "Фільми";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Фільми</h2>
+    <a asp-page="Create" class="btn btn-primary">+ Додати фільм</a>
+</div>
+
+@if (!Model.Movies.Any())
+{
+    <div class="alert alert-info">Фільмів ще немає. Додайте перший!</div>
+}
+else
+{
+    <table class="table table-hover table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Назва</th>
+                <th>Режисер</th>
+                <th>Жанр</th>
+                <th>Рік</th>
+                <th>Тривалість</th>
+                <th>Рейтинг</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model.Movies)
+            {
+                <tr>
+                    <td>@m.Title</td>
+                    <td>@m.Director?.FullName</td>
+                    <td>@m.Genre?.Name</td>
+                    <td>@m.Year</td>
+                    <td>@(m.Duration.HasValue ? $"{m.Duration} хв" : "—")</td>
+                    <td>
+                        @if (m.Rating.HasValue)
+                        {
+                            <span class="badge bg-warning text-dark">@m.Rating.Value.ToString("F1")</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@m.MovieId" class="btn btn-sm btn-outline-secondary">Редагувати</a>
+                        <a asp-page="Delete" asp-route-id="@m.MovieId" class="btn btn-sm btn-outline-danger">Видалити</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

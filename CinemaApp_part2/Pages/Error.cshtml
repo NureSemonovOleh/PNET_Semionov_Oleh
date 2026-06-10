@@ -1,0 +1,12 @@
+@page
+@model CinemaApp.Pages.ErrorModel
+@{ ViewData["Title"] = "Помилка"; }
+<div class="alert alert-danger">
+    <h2>Помилка</h2>
+    <p>Виникла помилка. Спробуйте ще раз.</p>
+    @if (Model.RequestId != null)
+    {
+        <p>Request ID: <code>@Model.RequestId</code></p>
+    }
+</div>
+<a asp-page="/Index" class="btn btn-primary">На головну</a>

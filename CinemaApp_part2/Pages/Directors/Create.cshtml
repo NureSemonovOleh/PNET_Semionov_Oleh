@@ -1,0 +1,28 @@
+@page
+@model CinemaApp.Pages.Directors.CreateModel
+@{ ViewData["Title"] = "Додати режисера"; }
+
+<h2>Додати режисера</h2><hr />
+<div class="row"><div class="col-md-5">
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Director.LastName" class="form-label"></label>
+        <input asp-for="Director.LastName" class="form-control" />
+        <span asp-validation-for="Director.LastName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Director.FirstName" class="form-label"></label>
+        <input asp-for="Director.FirstName" class="form-control" />
+        <span asp-validation-for="Director.FirstName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Director.Country" class="form-label"></label>
+        <input asp-for="Director.Country" class="form-control" />
+        <span asp-validation-for="Director.Country" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Зберегти</button>
+    <a asp-page="Index" class="btn btn-secondary ms-2">Скасувати</a>
+</form>
+</div></div>
+@section Scripts { @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }
